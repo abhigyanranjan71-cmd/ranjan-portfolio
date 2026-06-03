@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhigyan | Portfolio Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            background-color: #e6ddd3eb;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: black;
+            font-family: "Limelight", sans-serif;
+            padding: 12px 0;
+            white-space: nowrap;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            gap: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            color: black;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn a {
+            transition: background 0.3s ease, transform 0.3s ease;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .btn:hover a {
+            background-color: black;
+            transform: translateX(4px) scale(1.1);
+            box-shadow: 0 0 10px black;
+            color: white;
+        }
+
+        .hero {
+            background-color: #F5EFE4;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            gap: 30px;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .hero-left .one {
+            color: black;
+            font-family: "Limelight", sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .hero-left .two {
+            max-width: 500px;
+            font-size: 18px;
+            font-family: "Roboto", sans-serif;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.5s;
+            margin-top: 16px;
+        }
+
+        .hero-left .btn {
+            margin-top: 24px;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 1s;
+            border: 2px solid black;
+            background-color: orange;
+            cursor: pointer;
+            border-radius: 30px;
+            width: fit-content;
+            font-family: "Roboto", sans-serif;
+            font-size: 15px;
+        }
+
+        .bt {
+            margin-top: 20px;
+        }
+
+        .bt a {
+            transition: background 0.3s ease;
+            padding: 10px 16px;
+            text-decoration: none;
+            border: 2px solid black;
+            background-color: orange;
+            color: black;
+            display: inline-block;
+        }
+
+        .hero-right {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            border-radius: 25%;
+            box-shadow: 0 15px 35px black;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .hero-right img {
+            width: 380px;
+            height: 380px;
+            border-radius: 25%;
+            object-fit: cover;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.3s;
+            display: block;
+        }
+
+        .hero-right::before {
+            content: "PROFILE";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #e8e8e8;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 2;
+            border-radius: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            letter-spacing: 4px;
+        }
+
+        .hero-right:hover::before {
+            clip-path: polygon(0 0, 0 0, 100% 100%, 100% 100%);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .about {
+            background-color: #e6ddd3eb;
+            min-height: 100vh;
+            text-align: center;
+            font-size: 30px;
+            font-family: "Limelight", sans-serif;
+            padding: 40px 20px;
+        }
+
+        .line {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .line .about-left {
+            width: 45%;
+            min-width: 280px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .line .about-right {
+            width: 40%;
+            min-width: 260px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-right video {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0px 10px 15px rgb(58, 101, 189);
+        }
+
+        .skills {
+            background-color: #F5EFE4;
+            padding: 40px 0;
+        }
+
+        .skills h1 {
+            font-size: 70px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .Languages h1 { font-size: 35px; text-align: left; margin-left: 92px; }
+        .Frontend h1  { font-size: 30px; text-align: left; margin-left: 92px; }
+        .Backend h1   { font-size: 30px; text-align: left; margin-left: 92px; }
+        .Tools h1     { font-size: 30px; text-align: left; margin-left: 92px; }
+
+        .skill-list {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 16px;
+            margin-left: 80px;
+            width: fit-content;
+            border-radius: 10px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-list:hover {
+            transform: translateX(8px) scale(1.2);
+            background-color: #edddc9;
+            border-radius: 20%;
+            box-shadow: 0 0 15px black;
+        }
+
+        .skill-list img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        .projects {
+            background-color: #e6ddd3eb;
+            padding: 40px 0;
+        }
+
+        .projects h1 {
+            font-size: 70px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .project-list {
+            border: 2px solid rgb(52, 52, 54);
+            text-align: left;
+            font-size: 32px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0 150px 20px;
+            padding: 30px;
+            cursor: pointer;
+            background-color: #F5EFE4;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-list p {
+            font-size: 18px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 10px;
+        }
+
+        .project-list:hover {
+            background-color: #edddc9;
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 0 15px black;
+        }
+
+        .contact {
+            background-color: #F5EFE4;
+            min-height: 100vh;
+            text-align: center;
+            font-size: 30px;
+            padding: 40px 20px;
+        }
+
+        .contact h1 {
+            font-size: 70px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .contact .line {
+            align-items: stretch;
+        }
+
+        .contact-left {
+            width: 45%;
+            min-width: 260px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            border: 2px solid black;
+            border-radius: 20px;
+            background-color: white;
+            padding: 24px;
+            text-align: left;
+        }
+
+        .contact-left b {
+            font-size: 28px;
+            font-family: 'Limelight', sans-serif;
+        }
+
+        .contact-left p {
+            margin-top: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+        }
+
+        .contact-right {
+            width: 45%;
+            min-width: 260px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            border: 2px solid black;
+            padding: 24px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            word-break: break-all;
+        }
+
+        .contact-right img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .hero { min-height: auto; padding: 60px 30px 50px; }
+
+            .hero-left .one  { font-size: 40px; }
+            .hero-left .two  { font-size: 16px; }
+
+            .hero-right, .hero-right img { width: 300px; height: 300px; }
+
+            .skills h1, .projects h1, .contact h1 { font-size: 52px; }
+
+            .Languages h1 { font-size: 28px; margin-left: 50px; }
+            .Frontend h1, .Backend h1, .Tools h1 { font-size: 24px; margin-left: 50px; }
+            .skill-list { margin-left: 36px; }
+
+            .project-list { margin: 0 40px 20px; font-size: 26px; }
+
+            .about { min-height: auto; }
+            .contact { min-height: auto; }
+        }
+
+        @media (max-width: 768px) {
+
+            .nav {
+                justify-content: space-between;
+                padding: 0 14px;
+            }
+            .logo { font-size: 20px; }
+            .navbar { gap: 10px; font-size: 14px; padding: 10px 0; }
+            .btn a { padding: 6px 8px; }
+
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                min-height: auto;
+                padding: 50px 20px 40px;
+                gap: 30px;
+            }
+
+            .hero-left { align-items: center; }
+            .hero-left .one  { font-size: 34px; }
+            .hero-left .two  { font-size: 15px; max-width: 95%; text-align: center; }
+            .hero-left .btn  { border-radius: 20px; }
+
+            .hero-right, .hero-right img {
+                width: 240px;
+                height: 240px;
+            }
+
+            .about { font-size: 22px; min-height: auto; padding: 30px 16px; }
+            .line .about-left { width: 95%; font-size: 15px; }
+            .line .about-right { width: 95%; }
+
+            .skills h1 { font-size: 36px; }
+            .Languages h1 { font-size: 22px; margin-left: 16px; }
+            .Frontend h1, .Backend h1, .Tools h1 { font-size: 18px; margin-left: 16px; }
+            .skill-list { margin-left: 12px; }
+            .skill-list img { width: 36px; height: 36px; }
+            .skill-list:hover { transform: none; box-shadow: none; }
+
+            .projects h1 { font-size: 36px; }
+            .project-list { margin: 0 12px 16px; font-size: 20px; padding: 16px; }
+            .project-list p { font-size: 13px; }
+            .project-list:hover { transform: none; box-shadow: none; }
+
+            .contact { font-size: 18px; min-height: auto; padding: 30px 16px; }
+            .contact h1 { font-size: 36px; }
+            .contact-left, .contact-right { width: 95%; min-width: unset; }
+            .contact-left b { font-size: 22px; }
+            .contact-right { gap: 16px; }
+            .contact-row { font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            .logo { font-size: 16px; }
+            .navbar { font-size: 12px; gap: 6px; }
+
+            .hero-left .one  { font-size: 26px; }
+            .hero-left .two  { font-size: 13px; }
+            .hero-right, .hero-right img { width: 190px; height: 190px; }
+
+            .skills h1, .projects h1, .contact h1 { font-size: 28px; }
+            .project-list { font-size: 16px; }
+            .project-list p { font-size: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo">Abhigyan's Portfolio</div>
+        <ul class="navbar">
+            <li class="btn"><a href="#home">Home</a></li>
+            <li class="btn"><a href="#about">About</a></li>
+            <li class="btn"><a href="#projects">Projects</a></li>
+            <li class="btn"><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero" id="home">
+        <div class="hero-left">
+            <div class="one">Hello,</div>
+            <br>
+            <span class="one">I'm Abhigyan!</span>
+            <div class="two">I'm a passionate Full Stack Developer with a strong interest in building modern,
+                responsive, and user-friendly web applications. I enjoy turning ideas into real-world digital
+                experiences using both front-end and back-end technologies. From designing clean interfaces to
+                developing efficient server-side functionality, I love working on every part of the development process.
+                I'm constantly learning new technologies, improving my skills, and building projects that help me grow
+                as a developer. Currently, I'm focused on creating impactful web solutions and exploring new trends in
+                software development.
+            </div>
+            <div class="bt">
+                <a href="https://www.linkedin.com/in/abhigyan-ranjan-69a5b0408?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                    target="_blank">Go to my LinkedIn Profile</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="ChatGPT Image May 27, 2026, 12_58_09 PM.png" alt="Profile Picture">
+        </div>
+    </div>
+
+    <section class="about" id="about">
+        <h1>About Me</h1>
+        <div class="line">
+            <div class="about-left">
+                Hi, I'm <b>Abhigyan Ranjan</b>, a passionate Computer Science student currently pursuing my B.Tech in
+                CSE Core from <b>Vellore Institute of Technology</b>. I am currently in my learning phase where I enjoy
+                exploring different technologies and improving my development skills every day.
+                <br><br>
+                I am highly interested in <b>Web Development</b> and love creating modern, responsive, and user-friendly
+                websites using HTML, CSS, JavaScript, and other full-stack technologies. I also enjoy learning about
+                software development, problem-solving, and real-world tech applications.
+                <br><br>
+                My aim is to become a skilled <b>Full Stack Developer</b> and work on impactful projects that solve
+                real-world problems. I continuously try to improve my technical knowledge, build creative projects, and
+                gain practical experience.
+            </div>
+            <div class="about-right">
+                <video src="web2.mp4" autoplay loop muted></video>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills">
+        <h1><b>My Skills</b></h1>
+        <br><br>
+        <div class="Languages">
+            <h1>Programming Languages</h1>
+        </div>
+        <br>
+        <div class="Skill_set">
+            <div class="skill-list"><img src="c.jpg" alt="C"><span>C</span></div>
+            <br>
+            <div class="skill-list"><img src="c++.jpg" alt="C++"><span>C++</span></div>
+            <br>
+            <div class="skill-list"><img src="python.jpg" alt="Python"><span>Python</span></div>
+            <br>
+            <div class="skill-list"><img src="js.jpg" alt="JavaScript"><span>JavaScript</span></div>
+        </div>
+        <br><br>
+        <div class="Frontend">
+            <h1>Frontend</h1>
+            <br>
+            <div class="skill-list"><img src="Html.jpg" alt="HTML"><span>HTML</span></div>
+            <br>
+            <div class="skill-list"><img src="css.jpg" alt="CSS"><span>CSS</span></div>
+            <br>
+            <div class="skill-list"><img src="react.png" alt="React"><span>React</span></div>
+        </div>
+        <br>
+        <div class="Backend">
+            <h1>Backend</h1>
+            <br>
+            <div class="skill-list"><img src="express.jpg" alt="Express"><span>Express</span></div>
+            <br>
+            <div class="skill-list"><img src="mongo.png" alt="MongoDB"><span>MongoDB</span></div>
+        </div>
+        <br>
+        <div class="Tools">
+            <h1>Tools &amp; Platforms</h1>
+            <br>
+            <div class="skill-list"><img src="vs.png" alt="VS Code"><span>VS Code</span></div>
+            <br>
+            <div class="skill-list"><img src="git.png" alt="GitHub"><span>GitHub</span></div>
+        </div>
+        <br>
+    </section>
+
+    <section class="projects" id="projects">
+        <h1><b>My Projects</b></h1>
+        <br><br>
+        <div class="project-list">
+            <b>Abhigyan's Recipe | HTML Project</b>
+            <p>Built a multi-page restaurant website using HTML featuring Indian food menus, navigation between pages,
+                images/videos integration, and a contact section for user interaction</p>
+        </div>
+        <div class="project-list">
+            <p>More Projects coming soon...</p>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h1><b>Contact Me</b></h1>
+        <br><br>
+        <div class="line">
+            <div class="contact-left">
+                <b>Let's Connect!</b>
+                <p>Whether you have a project idea, an internship opportunity, or just want to connect — my inbox is
+                    always open. I'm actively looking for opportunities to apply my skills and grow as a developer.</p>
+            </div>
+            <div class="contact-right">
+                <div class="contact-row"><img src="gmail.jpg" alt="Email"> Email: abhigyanranjan71@gmail.com</div>
+                <div class="contact-row"><img src="linkedin.jpg" alt="LinkedIn"> LinkedIn: linkedin.com/in/abhigyan-ranjan</div>
+                <div class="contact-row"><img src="phone.jpg" alt="Phone"> +91 9023941643</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
