@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet">
 
     <style>
         /* ─── TOKENS ─────────────────────────────────────────────── */
@@ -80,6 +83,10 @@
             padding: 16px 0;
             white-space: nowrap;
             letter-spacing: 0.5px;
+        }
+        .logo a{
+            text-decoration: none;
+            color: white;
         }
 
         .navbar {
@@ -316,7 +323,7 @@
         .skills > h1 {
             font-size: 52px;
             text-align: center;
-            font-family: var(--font-mono);
+            font-family: var(--font-display);;
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -1px;
@@ -387,7 +394,7 @@
         .projects > h1 {
             font-size: 52px;
             text-align: center;
-            font-family: var(--font-mono);
+            font-family: var(--font-display);;
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -1px;
@@ -449,7 +456,7 @@
         .contact > h1 {
             font-size: 52px;
             text-align: center;
-            font-family: var(--font-mono);
+            font-family: var(--font-display);
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -1px;
@@ -514,6 +521,31 @@
             border-radius: var(--radius-sm);
             background-color: var(--bg-surface);
             transition: border-color 0.2s ease, color 0.2s ease;
+        }
+        .send{
+            margin-top: 32px;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 1s;
+            background-color: var(--accent);
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            width: fit-content;
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 600;
+            color: black; 
+            padding: 8px 14px;
+        }
+        .send a{
+            text-decoration: none;
+            color: #0A0A0A;
+        }
+        .send:hover{
+             background-color: #fb923c;
+            box-shadow: 0 0 24px var(--accent-glow);
         }
 
         .contact-row:hover {
@@ -625,7 +657,7 @@
 
 <body>
     <nav class="nav">
-        <div class="logo">Abhigyan's Portfolio</div>
+        <div class="logo"><a href="#home">Abhigyan's Portfolio</a></div>
         <ul class="navbar">
             <li class="btn"><a href="#home">Home</a></li>
             <li class="btn"><a href="#about">About</a></li>
@@ -756,7 +788,8 @@
                 <div class="contact-row"><img src="gmail.jpg" alt="Email"> Email: abhigyanranjan71@gmail.com</div>
                 <div class="contact-row"><img src="linkedin.jpg" alt="LinkedIn"> LinkedIn: linkedin.com/in/abhigyan-ranjan</div>
                 <div class="contact-row"><img src="phone.jpg" alt="Phone"> +91 9023941643</div>
-            </div>
+                <div class="send"><a href=https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRqhbwdzQhZKNfglGdjVRGsBKFzHQHhRxHtpCkhlXhWjdrjQMTPQvJNqPXVgrLgVdvjFNkv target="blank">Send me message</a></div>
+            </div> 
         </div>
     </section>
 </body>
